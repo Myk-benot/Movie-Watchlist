@@ -30,7 +30,7 @@ function renderSearch() {
 }
 
 btn.addEventListener("click", function () {
-  fetch(`http://www.omdbapi.com/?apikey=bdf87af0&s=${userInput.value}`)
+  fetch(`https://www.omdbapi.com/?apikey=bdf87af0&s=${userInput.value}`)
     .then((response) => response.json())
     .then((data) => {
       if (data.Response === "True") {
