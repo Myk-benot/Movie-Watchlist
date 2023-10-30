@@ -1,8 +1,8 @@
-let insertDivTwo = document.querySelector(".insert-div-two");
+let insertDivTwo = document.querySelector('.insert-div-two');
 
 function renderWatchlist() {
-  insertDivTwo.innerHTML = "";
-  let watchlist = JSON.parse(localStorage.getItem("movieArray")) || [];
+  insertDivTwo.innerHTML = '';
+  let watchlist = JSON.parse(localStorage.getItem('movieArray')) || [];
 
   if (watchlist && watchlist.length > 0) {
     watchlist.forEach((movie) => {
@@ -19,20 +19,24 @@ function renderWatchlist() {
         </div>
       `;
     });
+  } else {
+    insertDivTwo.innerHTML += `
+      <h1>Add Movies</h1>
+    `;
   }
 
-  const removeBtns = document.querySelectorAll(".click");
+  const removeBtns = document.querySelectorAll('.click');
   removeBtns.forEach((removeBtn) => {
-    removeBtn.addEventListener("click", removeFromWatchlist);
+    removeBtn.addEventListener('click', removeFromWatchlist);
   });
 }
 
 function removeFromWatchlist(event) {
   const removeBtn = event.target;
-  const imdbID = removeBtn.getAttribute("data-imdbid");
-  let watchlist = JSON.parse(localStorage.getItem("movieArray")) || [];
+  const imdbID = removeBtn.getAttribute('data-imdbid');
+  let watchlist = JSON.parse(localStorage.getItem('movieArray')) || [];
   const updatedWatchlist = watchlist.filter((movie) => movie.imdbID !== imdbID);
-  localStorage.setItem("movieArray", JSON.stringify(updatedWatchlist));
+  localStorage.setItem('movieArray', JSON.stringify(updatedWatchlist));
 
   renderWatchlist();
 }
